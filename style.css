@@ -77,7 +77,7 @@ body {
 
 /* ---------- Contenedor principal ---------- */
 .app {
-  max-width: 740px;
+  max-width: 780px;
   margin: 0 auto;
   padding: 2.5rem 1.25rem 5rem;
 }
@@ -281,7 +281,7 @@ button {
 }
 
 /* Mostrar acciones y handle al hacer hover */
-.task-row:hover .task-actions { opacity: 1; }
+/*.task-row:hover .task-actions { opacity: 1; }*/
 .task-row:hover .drag-handle  { opacity: .5; }
 
 /* ---------- Handle de arrastre ---------- */
@@ -350,7 +350,7 @@ button {
   font-size: 14px;
   line-height: 1.55;
   color: var(--text);
-  word-break: break-word;
+  white-space: nowrap;
   padding: 2px 0;
   cursor: text;
   min-height: 22px;
@@ -379,8 +379,6 @@ button {
   display: flex;
   align-items: center;
   gap: 2px;
-  opacity: 0;
-  transition: opacity .15s;
   flex-shrink: 0;
   padding-left: 4px;
 }
@@ -517,12 +515,13 @@ kbd {
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 520px) {
+@media (max-width: 531px) {
   .app { padding: 1.25rem .85rem 4rem; }
   h1 { font-size: 24px; }
   .btn-download span { display: none; }
   .btn-primary span { display: none; }
   .header { gap: 8px; }
+  .app-footer { display: none; }
 }
 
 /* Indicador visual durante drag-over en sublista */
