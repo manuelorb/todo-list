@@ -214,7 +214,7 @@ function updateUndoRedoBtns() {
 function confettiCannon() {
   confetti({
     particleCount: 300,
-    spread: 70,
+    spread: 90,
     origin: { x: 0, y: .9 }
   });
 
@@ -246,7 +246,6 @@ function updateStats() {
   }
   else if (pending === 0){
     taskCountEl.textContent = tr.allDone;
-    confettiCannon();
   }
   else {
     taskCountEl.textContent = tr.pending(pending);
@@ -331,6 +330,12 @@ function makeTask(id, text, checked) {
       const cb = child.querySelector(':scope > .task-row input[type="checkbox"]');
       if (cb) cb.checked = checkbox.checked;
     });
+
+     if (checkbox.checked) {
+      const { total, done } = countAll(rootList);
+      if (total > 0 && total === done) confettiCannon();
+    }
+
     saveState();
   });
 
