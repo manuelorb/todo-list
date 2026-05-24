@@ -41,7 +41,6 @@
 
   /* Tipografía */
   --font:         'DM Sans', system-ui, sans-serif;
-  --font-display: 'DM Serif Display', Georgia, serif;
 
   /* Drag & drop */
   --drag-over:    #E8F0EB;
@@ -100,10 +99,9 @@ body {
 }
 
 h1 {
-  font-family: var(--font-display);
+  font-family: var(--font);
   font-size: 30px;
-  font-weight: 400;
-  letter-spacing: -.5px;
+  font-weight: 500;
   color: var(--text);
 }
 
@@ -523,6 +521,7 @@ kbd {
   .app { padding: 1.25rem .85rem 4rem; }
   h1 { font-size: 24px; }
   .btn-download span { display: none; }
+  .btn-primary span { display: none; }
   .header { gap: 8px; }
 }
 

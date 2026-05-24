@@ -65,6 +65,7 @@ const i18n = {
     checkLabel:   'Marcar tarea como completada',
     taskLabel:    'Texto de la tarea',
     actionsLabel: 'Acciones',
+    footer: '<span>Para ver los atajos pulsa <kbd>H</kbd></span>',
   },
   en: {
     title:        'Tasks',
@@ -94,6 +95,7 @@ const i18n = {
     checkLabel:   'Mark task as completed',
     taskLabel:    'Task text',
     actionsLabel: 'Actions',
+    footer: '<span>To see the shortcuts, press <kbd>H</kbd></span>',
   },
 };
 
@@ -126,6 +128,7 @@ function applyLang() {
   themeBtn.title = tr.themeTitle;
   document.getElementById('downloadBtn').title = tr.downloadTitle;
   document.getElementById('addRootBtn').title  = tr.addTaskTitle;
+  document.getElementById('footer').innerHTML = tr.footer;
   langBtn.textContent = currentLang.toUpperCase();
   /* Actualizar titles de botones en tareas ya renderizadas */
   document.querySelectorAll('.btn-add').forEach(b => b.title = tr.addSubtask);
@@ -320,10 +323,12 @@ function makeTask(id, text, checked) {
   const btnAdd   = li.querySelector('.btn-add');
   const btnDel   = li.querySelector('.btn-del');
   const subList  = li.querySelector('.subtasks');
+  let checkboxTriggered = false;
 
   /* ---- Checkbox ---- */
   checkbox.addEventListener('change', () => {
     pushHistory();
+    checkboxTriggered = true;
     li.classList.toggle('checked', checkbox.checked);
     li.querySelectorAll('.task-item').forEach(child => {
       child.classList.toggle('checked', checkbox.checked);
@@ -336,6 +341,7 @@ function makeTask(id, text, checked) {
       if (total > 0 && total === done) confettiCannon();
     }
 
+    checkboxTriggered = false;
     saveState();
   });
 
